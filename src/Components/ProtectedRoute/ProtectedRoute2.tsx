@@ -1,11 +1,13 @@
-import React from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+import type { ReactNode } from 'react'
+interface ProtectedRouteProps {
+  children: ReactNode;
+}
 
-export default function ProtectedRoute2({children}) {
-  const navigate = useNavigate()
-  if(localStorage.getItem("userToken")){
-    return <Navigate to={"/"}/>
-  } else{
+export default function ProtectedRoute({ children }: ProtectedRouteProps) {
+  if (!localStorage.getItem("userToken")) {
+    return <Navigate to="/login" />
+  } else {
     return <>{children}</>
   }
 }

@@ -13,7 +13,7 @@ import {QueryClientProvider,QueryClient} from "@tanstack/react-query"
 import PostDetails from "./Pages/PostDetails/PostDetails";
 import {useNetworkState }from "react-use"
 import Offline from './Components/Offline/Offline';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import PostEdit from "./Pages/PostEdit/PostEdit";
 
 

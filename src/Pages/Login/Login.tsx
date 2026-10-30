@@ -13,7 +13,7 @@ export default function Login() {
   const [apiError,setapiError]=useState(null)
   const [isLoading,setisLoading]=useState(false)
   const navigate = useNavigate();
- const {userLogin, setuserLogin} = useContext(AuthContext)
+ const { setuserLogin} = useContext(AuthContext)
   const form = useForm<LoginSchemaType>({
     defaultValues: {
       email: "",

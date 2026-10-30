@@ -1,5 +1,4 @@
 import axios from 'axios'
-import React from 'react'
 import Loader from '../../Components/Loader/Loader';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
@@ -15,7 +14,7 @@ export default function PostDetails() {
             }
         })
     }
-      const {data,isError,isLoading,error,isFetching} = useQuery({
+      const {data,isError,isLoading,error} = useQuery({
         queryKey: ["getSinglePost"],
         queryFn: getPostDetails,
       });

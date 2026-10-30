@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { FaCommentAlt } from "react-icons/fa";
 import { FaImage } from "react-icons/fa6";
@@ -35,7 +34,7 @@ export default function CommentCreation({
     );
   }
 
-  const { data, isPending, mutate } = useMutation({
+  const {isPending, mutate } = useMutation({
     mutationFn: createComment,
     onSuccess: () => {
       console.log("comment created");

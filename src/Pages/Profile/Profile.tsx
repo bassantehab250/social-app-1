@@ -1,24 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 import type { UserType } from "../../Types/ProfileUser.type";
 import { jwtDecode } from "jwt-decode";
 import Post from "../../Components/Post/Post";
 import type { PostType } from "../../Types/Post.type";
-
 export default function Profile() {
   function getMyProfile() {
     return axios.get(`https://route-posts.routemisr.com/users/profile-data`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("userToken")}` },
     });
   }
-  const { data, isLoading, isError } = useQuery({
+  const { data } = useQuery({
     queryKey: ["getMyProfile"],
     queryFn: getMyProfile,
   });
   const user: UserType = data?.data.data.user;
   console.log(user);
-  const { user: userId }:{user:string} = jwtDecode(localStorage.getItem("userToken"));
+  const { user: userId }:{user:string} = jwtDecode(localStorage.getItem("userToken")!)
   function getMyPosts() {
     return axios.get(
       `https://route-posts.routemisr.com/users/${userId}/posts`,
@@ -29,14 +27,14 @@ export default function Profile() {
       },
     );
   }
-  const { data: postUserData, isLoading: loadingPostUser } = useQuery({
+  const { data: postUserData} = useQuery({
     queryKey: ["getUserPosts"],
     queryFn: getMyPosts,
   });
   // console.log(postUserData?.data.data.posts);
   return (
     <>
-      {user&& <div className="w-[700px] mx-auto p-2 rounded-lg shadow-2xl bg-slate-200 my-4">
+      {user&& <div className="w-175 mx-auto p-2 rounded-lg shadow-2xl bg-slate-200 my-4">
         <div className="flex justify-between items-center">
           <img
             src={user?.photo}

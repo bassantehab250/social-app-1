@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 import type { PostType } from "../../Types/Post.type";
 import Post from "../../Components/Post/Post";
 import Loader from "../../Components/Loader/Loader";
@@ -41,7 +40,7 @@ export default function Home() {
   // if (isError) {
   //   return <h1>error...</h1>;
   // }
-  const {data,isError,isLoading,error,isFetching} = useQuery({
+  const {data,isError,isLoading,error} = useQuery({
     queryKey: ["getAllPosts"],
     queryFn: getAllPosts,
   });
@@ -57,7 +56,7 @@ export default function Home() {
   return (
     <>
       <div className="my-4">
-       <div className="w-[600px]  mx-auto">
+       <div className="w-150 mx-auto">
         <PostCreation/>
        </div>
 

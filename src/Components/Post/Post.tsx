@@ -71,7 +71,7 @@ export default function Post({
 
   return (
     <>
-      <div className="w-[600px] mx-auto bg-slate-300 p-4 rounded-lg my-6">
+      <div className="w-150 mx-auto bg-slate-300 p-4 rounded-lg my-6">
         <div className="flex gap-4  justify-between items-center">
           <div className="flex gap-4 items-center">
             <img
@@ -92,7 +92,7 @@ export default function Post({
               />
             )}
             {isOpen && (
-              <div className="bg-white p-2 rounded-lg absolute  top-[120%] end-[-80px] shadow-2xl border-slate-400 border-2">
+              <div className="bg-white p-2 rounded-lg absolute  top-[120%] -inset-e-20 shadow-2xl border-slate-400 border-2">
                 <ul className="flex flex-col gap-2">
                   {/* Edit: go to the edit page with the post id */}
                   <li>

@@ -40,7 +40,7 @@ export default function Comment({
               className="font-bold text-2xl cursor-pointer"
             />
             {isOpen && (
-              <div className="bg-white p-2 rounded-lg absolute top-[120%] end-0 shadow-2xl border-slate-400 border-2">
+              <div className="bg-white p-2 rounded-lg absolute top-[120%] inset-e-0 shadow-2xl border-slate-400 border-2">
                 <ul className="flex flex-col gap-2">
                   <li>
                     <button

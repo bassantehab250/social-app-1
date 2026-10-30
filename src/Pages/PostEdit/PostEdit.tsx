@@ -7,7 +7,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FiImage, FiSend, FiX } from "react-icons/fi";
 import { ImSpinner11 } from "react-icons/im";
 import Loader from "../../Components/Loader/Loader";
-
 export default function PostEdit() {
   const { id } = useParams();
   const navigate = useNavigate();

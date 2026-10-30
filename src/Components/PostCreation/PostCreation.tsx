@@ -1,17 +1,15 @@
 import React, { useRef, useState } from "react";
 import { FaFileImage } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
-import meal from "../../assets/Honey Garlic Salmon.jpg";
 import { IoIosCloseCircle } from "react-icons/io";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ImSpinner11 } from "react-icons/im";
 import toast from "react-hot-toast";
-
 export default function PostCreation() {
   const [isUploaded, setisUploaded] = useState("");
-  const textInput = useRef(null);
-  const imgInput = useRef(null);
+const textInput = useRef<HTMLTextAreaElement>(null);
+const imgInput = useRef<HTMLInputElement>(null);
   const query = useQueryClient();
   //   console.log(imgInput.current.files[0])
   //   console.log(textInput.current.value)
@@ -22,11 +20,11 @@ export default function PostCreation() {
     });
   }
   function clearForm() {
-    textInput.current.value = "";
-    imgInput.current.value = "";
+    textInput.current!.value = "";
+    imgInput.current!.value = "";
     setisUploaded("");
   }
-  const { data, isPending, mutate } = useMutation({
+  const { isPending, mutate } = useMutation({
     mutationFn: createPost,
     onSuccess: (res) => {
       console.log(res.data.message);
@@ -35,24 +33,25 @@ export default function PostCreation() {
       query.invalidateQueries({ queryKey: ["getAllPosts"] });
     },
     onError: (err) => {
-        toast.error(err.message);
+      toast.error(err.message);
       console.log("err");
     },
     onSettled: () => {},
   });
   function handleCreatePost() {
-    if (textInput.current.value === "" && imgInput.current.value === "") return;
-    if (textInput.current.value) {
+    if (textInput.current?.value === "" && imgInput.current?.value === "")
+      return;
+    if (textInput.current?.value) {
       formdata.append("body", textInput.current!.value);
     }
-    if (imgInput.current.value) {
-      formdata.append("image", imgInput.current?.files[0]);
+    if (imgInput.current?.value) {
+      formdata.append("image", imgInput.current!.files![0]);
     }
     mutate();
   }
 
-  function handleImagePreview(e) {
-    const path = URL.createObjectURL(e.target.files[0]);
+  function handleImagePreview(e: React.ChangeEvent<HTMLInputElement>) {
+    const path = URL.createObjectURL(e.target.files![0]);
     setisUploaded(path);
   }
   return (
@@ -70,7 +69,7 @@ export default function PostCreation() {
             <img src={isUploaded} alt="" />
             <IoIosCloseCircle
               onClick={() => setisUploaded("")}
-              className="absolute top-[10px] end-[10px] size-8 text-white cursor-pointer"
+              className="absolute top-2.5 inset-e-2.5 size-8 text-white cursor-pointer"
             />
           </div>
         )}

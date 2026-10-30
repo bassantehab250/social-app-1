@@ -8,7 +8,6 @@ import Register from "./Pages/Register/Register";
 import Notfound from "./Pages/Notfound/Notfound";
 import AuthContextProvider from "./Context/AuthContext";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-import ProtectedRoute2 from "./Components/ProtectedRoute/ProtectedRoute2";
 import {QueryClientProvider,QueryClient} from "@tanstack/react-query"
 import PostDetails from "./Pages/PostDetails/PostDetails";
 import {useNetworkState }from "react-use"
@@ -28,8 +27,8 @@ const routers = createBrowserRouter([
       { path: "profile", element:<ProtectedRoute><Profile/></ProtectedRoute>},
       { path: "postdetails/:id", element:<ProtectedRoute><PostDetails/></ProtectedRoute>},
       { path: "postedit/:id", element:<ProtectedRoute><PostEdit/></ProtectedRoute>},
-      { path: "login", element: <ProtectedRoute2><Login/></ProtectedRoute2> },
-      { path: "register", element:<ProtectedRoute2><Register/></ProtectedRoute2> },
+      { path: "login", element: <Login/> },
+      { path: "register", element:<Register/> },
       { path: "notfound", element: <Notfound/> },
     ],
   },
